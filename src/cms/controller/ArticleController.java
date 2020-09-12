@@ -29,7 +29,8 @@ public class ArticleController {
         return  art;
     }
 
-    @RequestMapping(value = "/articles" , method = RequestMethod.POST)
+
+    @RequestMapping(value = "/articles" , method = RequestMethod.POST  )
     public void saveArticle(@RequestBody Article article){
         articleService.save(article);
     }
