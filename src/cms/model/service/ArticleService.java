@@ -13,7 +13,7 @@ import java.util.List;
 public class ArticleService {
 
     @Autowired
-    GenericRepository<Long, Article> repository;
+    GenericRepository<Long, Article ,String> repository;
 
     @Transactional(rollbackFor = Exception.class)
     public void save(Article article) {
@@ -40,4 +40,10 @@ public class ArticleService {
     public Article findOne(Article article, Long id) {
         return repository.findOne(article.getClass(), id);
     }
+
+
+    public List<Article> findByWhere(String where) {
+        return repository.findByWhere(Article.class , where);
+    }
+
 }

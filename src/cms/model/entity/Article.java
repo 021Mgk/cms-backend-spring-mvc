@@ -134,7 +134,7 @@ public class Article {
     }
 
     public Article setStatus(int status) {
-        status = status;
+        this.status = status;
         return this;
     }
 

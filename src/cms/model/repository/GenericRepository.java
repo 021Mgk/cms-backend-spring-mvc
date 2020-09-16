@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository("genericRepo")
-public class GenericRepository<I extends Number, T> {
+public class GenericRepository<I extends Number, T , S extends String> {
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -37,4 +37,9 @@ public class GenericRepository<I extends Number, T> {
     public List<T> findAll(Class aClass) {
         return entityManager.createQuery("select o from " + ((Entity) aClass.getAnnotation(Entity.class)).name() + " o").getResultList();
     }
+
+    public List<T> findByWhere(Class aClass , S s) {
+        return entityManager.createQuery("select o from " + ((Entity) aClass.getAnnotation(Entity.class)).name() + " o where " + s).getResultList();
+    }
+
 }
