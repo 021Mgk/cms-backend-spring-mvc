@@ -168,7 +168,7 @@ cms-backend-spring-mvc.iml
 
 out
 
-/web/WEB-INF
+/web/WEB-INF/lib
 
 .idea
 
