@@ -26,7 +26,7 @@ public class Article {
     private String cover;
     private String attachment;
     private int status;
-    private int views;
+    private Long views;
 
 
     public Article() {
@@ -34,7 +34,7 @@ public class Article {
     }
 
 
-    public Article(Date register_date, int type, String title, String summary, String text, String thumbnail, String cover, String attachment, int status, int views) {
+    public Article(Date register_date, int type, String title, String summary, String text, String thumbnail, String cover, String attachment, int status, Long views) {
         this.register_date = register_date;
         this.type = type;
         this.title = title;
@@ -134,15 +134,15 @@ public class Article {
     }
 
     public Article setStatus(int status) {
-        status = status;
+        this.status = status;
         return this;
     }
 
-    public int getViews() {
+    public Long getViews() {
         return views;
     }
 
-    public Article setViews(int views) {
+    public Article setViews(Long views) {
         this.views = views;
         return this;
     }

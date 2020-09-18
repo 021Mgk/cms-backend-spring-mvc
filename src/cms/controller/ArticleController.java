@@ -22,6 +22,7 @@ public class ArticleController {
         return  articles;
     }
 
+
     @RequestMapping("/articles/{Id}")
     public Article findById(@PathVariable("Id") String  articleId ){
         Article article = new Article();
@@ -29,7 +30,8 @@ public class ArticleController {
         return  art;
     }
 
-    @RequestMapping(value = "/articles" , method = RequestMethod.POST)
+
+    @RequestMapping(value = "/articles" , method = RequestMethod.POST  )
     public void saveArticle(@RequestBody Article article){
         articleService.save(article);
     }
