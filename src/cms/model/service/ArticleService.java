@@ -15,18 +15,15 @@ public class ArticleService {
     @Autowired
     GenericRepository<Long, Article ,String> repository;
 
-    @Transactional(rollbackFor = Exception.class)
     public void save(Article article) {
         repository.save(article);
     }
 
 
-    @Transactional
     public void update(Article article) {
         repository.update(article);
     }
 
-    @Transactional
     public void delete(Article article){
         repository.delete(article);
     }

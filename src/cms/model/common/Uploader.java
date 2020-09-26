@@ -1,13 +1,17 @@
 package cms.model.common;
 
 
+
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 
 public class Uploader {
-    private static  String UPLOAD_DIR  = "E:\\spring mvc\\cms\\images";
+
+
+    private static  String UPLOAD_DIR  = "E:\\resftull java EE\\cms-images";
 
 
 

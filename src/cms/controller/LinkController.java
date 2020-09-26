@@ -2,10 +2,13 @@ package cms.controller;
 
 
 
+import cms.model.common.Uploader;
 import cms.model.entity.Link;
 import cms.model.service.LinkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.List;
 
@@ -28,13 +31,26 @@ public class LinkController {
     public Link findById(@PathVariable("Id") String  linkId ){
         Link links = new Link();
         Link link = linksService.findOne(links , Long.parseLong(linkId));
+        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/downloadFile/")
+                .path(link.getIcon())
+                .toUriString();
+        link.setIcon(fileDownloadUri);
         return link;
     }
 
 
     @RequestMapping(value = "/links" , method = RequestMethod.POST  )
-    public void saveArticle(@RequestBody Link links){
-        linksService.save(links);
+    public void saveArticle(@RequestParam("file") MultipartFile file  ,  @ModelAttribute Link links){
+        try {
+            String fileName = file.getOriginalFilename();
+
+            Uploader.saveFile(file.getInputStream() , fileName);
+            links.setIcon(fileName);
+            linksService.save(links);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 

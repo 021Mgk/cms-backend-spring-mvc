@@ -1,6 +1,8 @@
 package cms.model.entity;
 
 
+import org.springframework.context.annotation.Configuration;
+
 import javax.persistence.*;
 
 @Entity(name = "link")
@@ -79,7 +81,7 @@ public class Link {
     }
 
     public String getIcon() {
-        return icon;
+        return  icon;
     }
 
     public Link setIcon(String icon) {
